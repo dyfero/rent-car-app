@@ -1,0 +1,7 @@
+{
+  "navbar": {
+    "welcome": "Witaj {{name}}!",
+    "myProfile": "Mój profil",
+    "logout": "Wyloguj"
+  }
+}

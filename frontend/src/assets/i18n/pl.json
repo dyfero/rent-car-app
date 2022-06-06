@@ -1,0 +1,126 @@
+{
+  "global": {
+    "title": "Aquapol",
+    "account": {
+      "main": "Konto",
+      "settings": "Ustawienia",
+      "password": "Hasło",
+      "sessions": "Sesje",
+      "login": "Autoryzacja",
+      "logout": "Wyloguj",
+      "register": "Zarejestruj się",
+      "locale": {
+        "pl": "Polski",
+        "en": "Angielski"
+      }
+    }
+  },
+  "action": {
+    "add": "Dodaj",
+    "addblob": "Dodaj dane binarne",
+    "addimage": "Dodaj zdjęcie",
+    "back": "Wstecz",
+    "return": "Powrót",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "edit": "Edytuj",
+    "open": "Otwórz",
+    "save": "Zapisz",
+    "view": "Widok",
+    "details": "Szczegóły",
+    "choose": "Wybierz",
+    "confirm": "Potwierdź",
+    "success": "Sukces!",
+    "error": "Błąd!",
+    "warning": "Ostrzeżenie!",
+    "print": "Drukuj",
+    "download": "Pobierz",
+    "manage": "Zarządzaj",
+    "clear": "Wyczyść",
+    "send": "Wyślij",
+    "rollback": "Wycofaj",
+    "restore": "Przywróć",
+    "yes": "Tak",
+    "no": "Nie",
+    "next": "Dalej",
+    "generate": "Generuj",
+    "export": "Eksportuj"
+  },
+  "file": {
+    "csv": "CSV",
+    "excel": "Excel",
+    "pdf": "PDF"
+  },
+  "validation": {
+    "required": "Pole {{name}} jest wymagane.",
+    "email": "Podaj prawidłowy adres e-mail.",
+    "minlength": "Wartość musi mieć długość co najmniej {{min}} znaków.",
+    "maxlength": "Wartość nie może być dłuższa niż {{max}} znaków.",
+    "min": "Wartość powinna być większa niż {{min}}.",
+    "max": "Wartość nie może być większa niż {{max}}.",
+    "minbytes": "Wartość nie może być mniejsza niż {{min}} bajtów.",
+    "maxbytes": "Wartość nie może być większa niż {{max}} bajtów.",
+    "pattern": "Wartość powinna być zgodna ze wzorem {{pattern}}.",
+    "number": "Wartość powinna być liczbowa.",
+    "text": "Wartość nie powinna zawierać cyfr.",
+    "datetimelocal": "Wartość powinna zawierać datę i czas.",
+    "confirmPassword": "Hasła muszą być takie same.",
+    "unique": "Wartość musi być unikatowa",
+    "mustMatch": "Wartość musi być zostać powtórzona poprawnie.",
+    "requiredValue": "Wartość powinna być poprawna."
+  },
+  "pagination": {
+    "next": "Następna strona",
+    "prev": "Poprzednia strona",
+    "showMore": "Pobierz więcej"
+  },
+  "table": {
+    "summary": "Pozycje od {first} do {last} z {totalRecords}",
+    "noResult": "Brak wyników",
+    "amount": "Liczba"
+  },
+  "form": {
+    "acceptTitle": "Potwierdź",
+    "title": "Formularz {{name}}",
+    "delete": {
+      "title": "Usuń pozycję",
+      "question": "Czy na pewno chcesz usunąć pozycję: {{name}}?"
+    }
+  },
+  "error": {
+    "500": "Wewnętrzny błąd serwera",
+    "503": "Serwer jest nieosiągalny",
+    "404": "Nie znaleziono strony",
+    "400": "Wystąpił błąd zapytania",
+    "NotNull": "Wartość {{fieldName}} nie może być pusta!",
+    "Size": "Wartość {{fieldName}} nie spełnia wymagań co do długości!",
+    "userexists": "Użytkownik o takiej nazwie już istnieje!",
+    "invalidpassword": "Niepoprawne hasło!",
+    "samepasswords": "Nowe hasło musi się różnić od aktualnego hasła!",
+    "emailexists": "Użytkownik z takim adresem email już istnieje!",
+    "idexists": "Nowy {{entityName}} nie może jeszcze mieć przypisanego ID",
+    "idnull": "Błędne ID",
+    "file": {
+      "could.not.extract": "Could not extract file",
+      "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
+    },
+    "notfound": "Nie znaleziono zasobu!",
+    "sync": "Wystąpił nieznany błąd podczas synchronizacji!",
+    "deviceManagement": {
+      "devicenotfound": "Nie znaleziono urządzenia o podanym numerze",
+      "devicealreadyused": "Urządzenie jest już przypisane do użytkownika",
+      "invaliddevicepassword": "Nieprawidłowe hasło urządzenia",
+      "devicedecommitted": "Urządzenie zostało wycofane"
+    }
+  },
+  "success": {
+    "create": "Zapisano pomyślnie.",
+    "update": "Zaktualizowano pomyślnie.",
+    "delete": "Usunięto pomyślnie.",
+    "sync": "Synchronizacja przebiegła pomyślnie.",
+    "successfullyactivated": "Pomyślnie aktywowano"
+  },
+  "warning": {
+    "tokenexpired": "Sesja użytkownika wygasła"
+  }
+}

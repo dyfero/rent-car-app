@@ -1,0 +1,77 @@
+<div class="overlay"></div>
+
+<nav #nav class="navbar navbar-vertical sidebar navbar-light bg-white" id="sidenav-main">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand d-none d-md-block pt-0" routerLinkActive="active" [routerLink]="['/dashboard']">
+      <img src="./assets/img/brand/red.png" class="navbar-brand-img" alt="...">
+    </a>
+    <!-- Collapse -->
+    <div class="" id="sidenav-collapse-main">
+      <!-- Navigation -->
+      <div class="nav-container">
+        <ng-container [ngTemplateOutlet]="menuItemsTemplate"
+                      [ngTemplateOutletContext]="{ items: menuItems }">
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<nav class="navbar navbar-vertical d-block d-md-none navbar-expand-md navbar-light bg-white">
+  <div class="container-fluid">
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" (click)="toggle()"
+            aria-controls="sidenav-collapse-main">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Brand -->
+    <a class="navbar-brand pt-0" routerLinkActive="active" [routerLink]="['/dashboard']">
+      <img src="./assets/img/brand/red.png" class="navbar-brand-img" alt="...">
+    </a>
+    <!-- User -->
+    <ul class="nav align-items-center d-md-none">
+      <app-header></app-header>
+    </ul>
+  </div>
+</nav>
+
+<ng-template #menuItemsTemplate let-items="items" let-collapse="collapse">
+  <ul class="navbar-nav" [ngbCollapse]="collapse">
+    <li
+      *ngFor="let item of items" class="{{item.class}} nav-item"
+      [attr.aria-expanded]="item.active"
+      aria-controls="collapse"
+    >
+      <div class="nav-link-container">
+        <!-- Basic -->
+        <ng-container *ngIf="item.type === 'basic'">
+          <a routerLinkActive="active" [routerLink]="[item.path]" class="nav-link">
+            <i *ngIf="item.icon" class="ni {{ item.icon }}"></i>{{ item.title | transloco }}
+          </a>
+        </ng-container>
+        <!-- Collapsable -->
+        <ng-container *ngIf="item.type === 'collapsable'">
+          <a class="nav-link d-flex justify-content-between" (click)="item.active = !item.active">
+          <span>
+            <i *ngIf="item.icon" class="ni {{item.icon}}"></i>{{ item.title | transloco }}
+          </span>
+            <i class="ni ni-bold-down text-center"></i>
+          </a>
+        </ng-container>
+        <!-- Divider -->
+        <ng-container *ngIf="item.type === 'divider'">
+          <div>
+            <hr class="mx-4 my-2">
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- children -->
+      <ng-container *ngIf="item.children?.length" [ngTemplateOutlet]="menuItemsTemplate"
+                    [ngTemplateOutletContext]="{ items: item.children, collapse: !item.active }">
+      </ng-container>
+
+    </li>
+  </ul>
+</ng-template>

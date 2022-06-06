@@ -1,0 +1,206 @@
+@use "sass:math";
+@import "src/assets/scss/custom/mixins";
+@import "src/assets/scss/custom/functions";
+@import "src/assets/scss/custom/variables";
+
+.navbar-vertical {
+  &.sidebar {
+    .nav-container {
+      margin-left: -3.75rem;
+      margin-right: -1.5rem;
+
+      .navbar-nav {
+        width: 100%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+
+        .nav-item {
+          cursor: pointer;
+          padding-left: 2.25rem !important;
+
+          .nav-link-container {
+            margin: .15rem .4rem;
+
+            .nav-link {
+              padding-right: unset !important;
+
+              i {
+                min-width: 2.25rem;
+                font-size: 0.9375rem;
+                line-height: 1.5rem;
+              }
+
+              &.active {
+                font-weight: 600;
+                border-radius: .4rem;
+                background: rgba(136, 136, 183, 0.1);
+
+                &:before {
+                  border-left: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 71px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: #000;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+}
+
+nav#sidenav-main {
+  transition-duration: .3s;
+  transition-timing-function: cubic-bezier(.25,.8,.25,1);
+  transition-property: margin-left;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    margin-top: 70px;
+  }
+
+  nav#sidenav-main {
+    margin-left: -250px;
+  }
+
+
+  .navbar-nav {
+    .nav-link {
+      color: rgba(0, 0, 0, .5) !important;
+    }
+
+    .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+      color: rgba(0, 0, 0, 0.7) !important;
+    }
+  }
+}
+
+.sidebar {
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: $navbar-vertical-width;
+  padding-left: $navbar-vertical-padding-x;
+  padding-right: $navbar-vertical-padding-x;
+  overflow-y: auto;
+  z-index: 100;
+
+  // Container
+  >[class*="container"] {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: start;
+    min-height: 100%;
+    padding-left: 0;
+    padding-right: 0; // Target IE 10 & 11
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      min-height: none;
+      height: 100%;
+    }
+  }
+
+  // Fixes the vertical navbar to the left
+  &.fixed-left {
+    left: 0;
+    border-width: 0 1px 0 0;
+  }
+
+  // Fixed the vertical navbar to the right
+  &.fixed-right {
+    right: 0;
+    border-width: 0 0 0 1px;
+  }
+
+  // Navbar collapse
+  .navbar-collapse {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-left: -$navbar-vertical-padding-x;
+    margin-right: -$navbar-vertical-padding-x;
+    padding-left: $navbar-vertical-padding-x;
+    padding-right: $navbar-vertical-padding-x;
+
+    > * {
+      min-width: 100%;
+    }
+  }
+
+  // Navbar navigation
+  .navbar-nav {
+    flex-direction: column;
+    margin-left: -$navbar-vertical-padding-x;
+    margin-right: -$navbar-vertical-padding-x;
+  }
+
+  .navbar-nav .nav-link {
+    padding: $navbar-vertical-nav-link-padding-y $navbar-vertical-nav-link-padding-x;
+
+    &.active {
+      &:before {
+        top: $nav-link-padding-y;
+        bottom: $nav-link-padding-y;
+        left: 0;
+        right: auto;
+        border-left: 2px solid $primary;
+        border-bottom: 0;
+      }
+    }
+  }
+
+  // Second level
+  .navbar-nav .nav .nav-link {
+    padding-left: $navbar-vertical-padding-x + $navbar-icon-min-width;
+  }
+
+
+  // Third level
+  .navbar-nav .nav .nav .nav-link {
+    padding-left: $navbar-vertical-padding-x * 1.5 + $navbar-icon-min-width;
+  }
+
+  // Navbar brand
+  .navbar-brand {
+    display: block;
+    text-align: center;
+    padding-top: (2rem - $navbar-padding-y);
+    padding-bottom: (2rem - $navbar-padding-y);
+  }
+
+  .navbar-brand-img {
+    max-height: 2.5rem;
+  }
+
+  // Navbar user
+  .navbar-user {
+    margin-left: -$navbar-vertical-padding-x;
+    margin-right: -$navbar-vertical-padding-x;
+    padding-top: $spacer;
+    padding-bottom: $spacer - $navbar-padding-y;
+    padding-left: $navbar-vertical-padding-x;
+    padding-right: $navbar-vertical-padding-x;
+    border-top: 1px solid $border-color;
+
+    // Dropup menu
+    .dropup .dropdown-menu {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}

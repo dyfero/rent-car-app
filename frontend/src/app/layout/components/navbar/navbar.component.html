@@ -1,0 +1,18 @@
+<nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+  <div class="container-fluid">
+    <div>
+      <a class="d-none d-md-inline-block mr-3" type="button" (click)="toggleSidebar()">
+        <span class="navbar-toggler-icon"></span>
+      </a>
+      <!-- Brand -->
+      <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" routerLinkActive="active" [routerLink]="['/dashboard']">
+        {{ title | transloco }}
+      </a>
+    </div>
+
+    <!-- User -->
+    <ul class="navbar-nav align-items-center d-none d-md-flex">
+      <app-header></app-header>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,10 @@
+{
+  "title": {
+    "dashboard": "Dashboard",
+    "administration": "Administration",
+    "dictionaries": "Dictionaries",
+    "cars": "Cars",
+    "customers": "Customers",
+    "rents": "Rents"
+  }
+}

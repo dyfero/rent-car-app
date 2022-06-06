@@ -1,0 +1,88 @@
+<div class="header bg-gradient-info pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body mx-2">
+      <h1 class="display-1 text-white">Samochody</h1>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row mt-5">
+    <div class="col mb-5 mb-xl-0">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col text-right">
+              <button
+                class="btn btn-icon btn-2 btn-primary" type="button" (click)="carFormComponent.open()">
+                <span class="btn-inner--icon">
+                  <i class="fa fa-plus mr-1" aria-hidden="true"></i>
+                  Dodaj
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <p-table [value]="data" responsiveLayout="scroll">
+          <ng-template pTemplate="colgroup">
+            <colgroup>
+              <col style="width:50px">
+              <col style="width:200px">
+              <col style="width:200px">
+              <col style="width:200px">
+              <col style="width:200px">
+              <col style="width:200px">
+              <col style="width:200px">
+              <col style="width:75px">
+            </colgroup>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Id</th>
+              <th>Marka</th>
+              <th>Model</th>
+              <th>Rok produkcji</th>
+              <th>Moc silnika</th>
+              <th>Rodzaj paliwa</th>
+              <th>Cena na dzień</th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-car>
+            <tr>
+              <td>{{car.id}}</td>
+              <td>{{car.brand}}</td>
+              <td>{{car.model}}</td>
+              <td>{{car.manufacture_year}}</td>
+              <td>{{car.engine_power}}</td>
+              <td>{{car.fuel_type}}</td>
+              <td>{{car.price_per_day}}</td>
+              <td>
+                <div
+                  ngbDropdown placement="bottom-right" container="body">
+                  <a class="btn btn-sm btn-icon-only text-muted" ngbDropdownToggle>
+                    <i class="fas fa-ellipsis-v"></i>
+                  </a>
+                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                    <a
+                      ngbDropdownItem href="javascript:void(0)" (click)="carFormComponent.open(car)">
+                      <i class="fas fa-edit text-muted" aria-hidden="true"></i>
+                      <span>{{ 'action.edit' | transloco }}</span>
+                    </a>
+                    <a
+                      ngbDropdownItem href="javascript:void(0)">
+                      <i class="fas fa-trash text-muted" aria-hidden="true"></i>
+                      <span>{{ 'action.delete' | transloco }}</span>
+                    </a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-car-form #carFormComponent (onSavedEmit)="getData()"></app-car-form>

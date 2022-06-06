@@ -1,0 +1,85 @@
+<div class="header bg-gradient-info pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body mx-2">
+      <h1 class="display-1 text-white">Wypożyczenia</h1>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row mt-5">
+    <div class="col mb-5 mb-xl-0">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col text-right">
+              <button
+                class="btn btn-icon btn-2 btn-primary" type="button" (click)="rentFormComponent.open()">
+                <span class="btn-inner--icon">
+                  <i class="fa fa-plus mr-1" aria-hidden="true"></i>
+                  Dodaj
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <p-table [value]="data" responsiveLayout="scroll">
+          <ng-template pTemplate="colgroup">
+            <colgroup>
+              <col style="width:50px">
+              <col style="width:200px">
+              <col style="width:200px">
+              <col style="width:200px">
+              <col style="width:200px">
+              <col style="width:200px">
+              <col style="width:75px">
+            </colgroup>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Id</th>
+              <th>Samochód</th>
+              <th>Klient</th>
+              <th>Data rozpoczęcia</th>
+              <th>Data zakończenia</th>
+              <th>Cena</th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rent>
+            <tr>
+              <td>{{rent.id}}</td>
+              <td>{{rent.car}}</td>
+              <td>{{rent.customer}}</td>
+              <td>{{rent.start_date}}</td>
+              <td>{{rent.end_date}}</td>
+              <td>{{rent.price}}</td>
+              <td>
+                <div
+                  ngbDropdown placement="bottom-right" container="body">
+                  <a class="btn btn-sm btn-icon-only text-muted" ngbDropdownToggle>
+                    <i class="fas fa-ellipsis-v"></i>
+                  </a>
+                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                    <a
+                      ngbDropdownItem href="javascript:void(0)" (click)="rentFormComponent.open(rent)">
+                      <i class="fas fa-edit text-muted" aria-hidden="true"></i>
+                      <span>{{ 'action.edit' | transloco }}</span>
+                    </a>
+                    <a
+                      ngbDropdownItem href="javascript:void(0)" (click)="delete(rent)">
+                      <i class="fas fa-trash text-muted" aria-hidden="true"></i>
+                      <span>{{ 'action.delete' | transloco }}</span>
+                    </a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-rent-form #rentFormComponent (onSavedEmit)="getData()"></app-rent-form>

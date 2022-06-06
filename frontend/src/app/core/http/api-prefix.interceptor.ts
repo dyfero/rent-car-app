@@ -3,7 +3,7 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor, HttpHeaders
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
@@ -23,7 +23,7 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
     }
 
     if (!/^(http|https):/i.test(request.url)) {
-      request = request.clone({ url: environment.apiUrl + request.url });
+      request = request.clone({ url: environment.apiUrl + request.url + '/' });
     }
     return next.handle(request);
   }

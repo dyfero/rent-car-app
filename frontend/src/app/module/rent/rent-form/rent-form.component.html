@@ -1,0 +1,160 @@
+<p-dialog
+  styleClass="p-2 bg-white"
+  [(visible)]="visible"
+  [modal]="true"
+  [style]="{ width: '50vw', 'min-width': '450px' }"
+  header="Formularz klienta"
+  (onHide)="hide()">
+  <ng-template pTemplate="content">
+
+    <form
+      id="group-form"
+      #formDirective="ngForm"
+      [formGroup]="form"
+      (ngSubmit)="submit()">
+
+      <!-- customer -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-customer">Klient</label>
+            <p-dropdown
+              id="input-customer"
+              styleClass="w-100"
+              [options]="customers"
+              formControlName="customer"
+              [ngClass]="{ 'is-invalid' : (fc.customer.errors && (formDirective.submitted || fc.customer.touched)) }"
+              appendTo="body">
+              <ng-template pTemplate="selectedItem">
+                <div class="d-flex" *ngIf="fc?.customer?.value; else placeholder">
+                  {{ fc.customer.value?.first_name }} {{ fc.customer.value?.last_name }}
+                </div>
+                <ng-template #placeholder>
+                  <div class="d-flex">
+                    {{ 'action.choose' | transloco }}
+                  </div>
+                </ng-template>
+              </ng-template>
+              <ng-template let-customer pTemplate="item">
+                <div class="d-flex">
+                  {{ customer.first_name }} {{ customer?.last_name }}
+                </div>
+              </ng-template>
+            </p-dropdown>
+
+            <app-error [formControlField]="fc.customer" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+      <!-- car -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-car">Samochód</label>
+            <p-dropdown
+              id="input-car"
+              styleClass="w-100"
+              [options]="cars"
+              formControlName="car"
+              [ngClass]="{ 'is-invalid' : (fc.car.errors && (formDirective.submitted || fc.car.touched)) }"
+              appendTo="body">
+              <ng-template pTemplate="selectedItem">
+                <div class="d-flex" *ngIf="fc?.car?.value; else placeholder">
+                  {{ fc.car.value?.brand }} {{ fc.car.value?.model }}
+                </div>
+                <ng-template #placeholder>
+                  <div class="d-flex">
+                    {{ 'action.choose' | transloco }}
+                  </div>
+                </ng-template>
+              </ng-template>
+              <ng-template let-car pTemplate="item">
+                <div class="d-flex">
+                  {{ car.brand }} {{ car?.model }}
+                </div>
+              </ng-template>
+            </p-dropdown>
+
+            <app-error [formControlField]="fc.car" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+      <!-- start date -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-start_date">Data rozpoczęcia</label>
+            <p-calendar
+              id="input-start_date"
+              styleClass="w-100"
+              formControlName="start_date"
+              dateFormat="dd.mm.yy"
+              (ngModelChange)="onDateChange()"
+              [ngClass]="{ 'is-invalid' : (fc.start_date.errors && (formDirective.submitted || fc.start_date.touched)) }"
+              appendTo="body">
+            </p-calendar>
+
+            <app-error [formControlField]="fc.start_date" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+      <!-- end date -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-end_date">Data zakończenia</label>
+            <p-calendar
+              id="input-end_date"
+              styleClass="w-100"
+              formControlName="end_date"
+              (ngModelChange)="onDateChange()"
+              dateFormat="dd.mm.yy"
+              [ngClass]="{ 'is-invalid' : (fc.end_date.errors && (formDirective.submitted || fc.end_date.touched)) }"
+              appendTo="body">
+            </p-calendar>
+
+            <app-error [formControlField]="fc.end_date" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+      <!-- price -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-price">Cena</label>
+            <input
+              type="number"
+              id="input-price"
+              class="form-control"
+              [ngClass]="{ 'is-invalid' : (fc.price.errors && (formDirective.submitted || fc.price.touched)) }"
+              formControlName="price">
+            <app-error [formControlField]="fc.price" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </ng-template>
+
+  <p-footer>
+    <div class="d-flex justify-content-end">
+      <button
+        type="reset"
+        class="btn btn-secondary"
+        (click)="hide()">
+        {{ 'action.cancel' | transloco }}
+      </button>
+      <button
+        type="submit"
+        class="btn btn-primary mr-1"
+        form="group-form"
+        [disabled]="form.disabled">
+        {{ 'action.save' | transloco }}
+      </button>
+    </div>
+  </p-footer>
+</p-dialog>

@@ -1,0 +1,88 @@
+<div class="header bg-gradient-info pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body mx-2">
+      <h1 class="display-1 text-white">Klienci</h1>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row mt-5">
+    <div class="col mb-5 mb-xl-0">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col text-right">
+              <button
+                class="btn btn-icon btn-2 btn-primary" type="button" (click)="customerFormComponent.open()">
+                <span class="btn-inner--icon">
+                  <i class="fa fa-plus mr-1" aria-hidden="true"></i>
+                  Dodaj
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <p-table [value]="data" responsiveLayout="scroll">
+          <ng-template pTemplate="colgroup">
+            <colgroup>
+              <col style="width:50px">
+              <col style="width:200px">
+              <col style="width:200px">
+              <col style="width:200px">
+              <col style="width:200px">
+              <col style="width:200px">
+              <col style="width:200px">
+              <col style="width:75px">
+            </colgroup>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Id</th>
+              <th>Imię</th>
+              <th>Nazwisko</th>
+              <th>Miasto</th>
+              <th>Kod pocztowy</th>
+              <th>Ulica</th>
+              <th>Numer/Numer mieszkania</th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-customer>
+            <tr>
+              <td>{{customer.id}}</td>
+              <td>{{customer.first_name}}</td>
+              <td>{{customer.last_name}}</td>
+              <td>{{customer.city}}</td>
+              <td>{{customer.postal_code}}</td>
+              <td>{{customer.street}}</td>
+              <td>{{customer.street_number}}/{{customer.flat_number}}</td>
+              <td>
+                <div
+                  ngbDropdown placement="bottom-right" container="body">
+                  <a class="btn btn-sm btn-icon-only text-muted" ngbDropdownToggle>
+                    <i class="fas fa-ellipsis-v"></i>
+                  </a>
+                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                    <a
+                      ngbDropdownItem href="javascript:void(0)" (click)="customerFormComponent.open(customer)">
+                      <i class="fas fa-edit text-muted" aria-hidden="true"></i>
+                      <span>{{ 'action.edit' | transloco }}</span>
+                    </a>
+                    <a
+                      ngbDropdownItem href="javascript:void(0)" (click)="delete(customer)">
+                      <i class="fas fa-trash text-muted" aria-hidden="true"></i>
+                      <span>{{ 'action.delete' | transloco }}</span>
+                    </a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-customer-form #customerFormComponent (onSavedEmit)="getData()"></app-customer-form>

@@ -1,0 +1,148 @@
+<p-dialog
+  styleClass="p-2 bg-white"
+  [(visible)]="visible"
+  [modal]="true"
+  [style]="{ width: '50vw', 'min-width': '450px' }"
+  header="Formularz klienta"
+  (onHide)="hide()">
+  <ng-template pTemplate="content">
+
+    <form
+      id="group-form"
+      #formDirective="ngForm"
+      [formGroup]="form"
+      (ngSubmit)="submit()">
+
+      <!-- first_name -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-first-name">Imię</label>
+            <input
+              type="text"
+              id="input-first-name"
+              class="form-control"
+              [ngClass]="{ 'is-invalid' : (fc.first_name.errors && (formDirective.submitted || fc.first_name.touched)) }"
+              formControlName="first_name">
+            <app-error [formControlField]="fc.first_name" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+      <!-- last_name -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-last-name">Nazwisko</label>
+            <input
+              type="text"
+              id="input-last-name"
+              class="form-control"
+              [ngClass]="{ 'is-invalid' : (fc.last_name.errors && (formDirective.submitted || fc.last_name.touched)) }"
+              formControlName="last_name">
+            <app-error [formControlField]="fc.last_name" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+      <!-- city -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-city">Miasto</label>
+            <input
+              type="text"
+              id="input-city"
+              class="form-control"
+              [ngClass]="{ 'is-invalid' : (fc.city.errors && (formDirective.submitted || fc.city.touched)) }"
+              formControlName="city">
+            <app-error [formControlField]="fc.city" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+      <!-- postal_code -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-postal_code">Kod pocztowy</label>
+            <input
+              type="text"
+              id="input-postal_code"
+              class="form-control"
+              [ngClass]="{ 'is-invalid' : (fc.postal_code.errors && (formDirective.submitted || fc.postal_code.touched)) }"
+              formControlName="postal_code">
+            <app-error [formControlField]="fc.postal_code" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+      <!-- street -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-street">Ulica</label>
+            <input
+              type="text"
+              id="input-street"
+              class="form-control"
+              [ngClass]="{ 'is-invalid' : (fc.street.errors && (formDirective.submitted || fc.street.touched)) }"
+              formControlName="street">
+            <app-error [formControlField]="fc.street" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+      <!-- street_number -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-street_number">Numer</label>
+            <input
+              type="number"
+              id="input-street_number"
+              class="form-control"
+              [ngClass]="{ 'is-invalid' : (fc.street_number.errors && (formDirective.submitted || fc.street_number.touched)) }"
+              formControlName="street_number">
+            <app-error [formControlField]="fc.street_number" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+      <!-- flat_number -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-flat_number">Numer domu</label>
+            <input
+              type="number"
+              id="input-flat_number"
+              class="form-control"
+              [ngClass]="{ 'is-invalid' : (fc.flat_number.errors && (formDirective.submitted || fc.flat_number.touched)) }"
+              formControlName="flat_number">
+            <app-error [formControlField]="fc.flat_number" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </ng-template>
+
+  <p-footer>
+    <div class="d-flex justify-content-end">
+      <button
+        type="reset"
+        class="btn btn-secondary"
+        (click)="hide()">
+        {{ 'action.cancel' | transloco }}
+      </button>
+      <button
+        type="submit"
+        class="btn btn-primary mr-1"
+        form="group-form"
+        [disabled]="form.disabled">
+        {{ 'action.save' | transloco }}
+      </button>
+    </div>
+  </p-footer>
+</p-dialog>

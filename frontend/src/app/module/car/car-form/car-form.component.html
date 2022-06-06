@@ -1,0 +1,132 @@
+<p-dialog
+  styleClass="p-2 bg-white"
+  [(visible)]="visible"
+  [modal]="true"
+  [style]="{ width: '50vw', 'min-width': '450px' }"
+  header="Formularz samochodu"
+  (onHide)="hide()">
+  <ng-template pTemplate="content">
+
+    <form
+      id="group-form"
+      #formDirective="ngForm"
+      [formGroup]="form"
+      (ngSubmit)="submit()">
+
+      <!-- brand -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-brand">Marka</label>
+            <input
+              type="text"
+              id="input-brand"
+              class="form-control"
+              [ngClass]="{ 'is-invalid' : (fc.brand.errors && (formDirective.submitted || fc.brand.touched)) }"
+              formControlName="brand">
+            <app-error [formControlField]="fc.brand" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+      <!-- model -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-model">Model</label>
+            <input
+              type="text"
+              id="input-model"
+              class="form-control"
+              [ngClass]="{ 'is-invalid' : (fc.model.errors && (formDirective.submitted || fc.model.touched)) }"
+              formControlName="model">
+            <app-error [formControlField]="fc.model" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+      <!-- manufacture_year -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-manufacture-year">Rok produkcji</label>
+            <input
+              type="text"
+              id="input-manufacture-year"
+              class="form-control"
+              [ngClass]="{ 'is-invalid' : (fc.manufacture_year.errors && (formDirective.submitted || fc.manufacture_year.touched)) }"
+              formControlName="manufacture_year">
+            <app-error [formControlField]="fc.manufacture_year" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+      <!-- engine_power -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-engine-power">Moc silnika</label>
+            <input
+              type="number"
+              id="input-engine-power"
+              class="form-control"
+              [ngClass]="{ 'is-invalid' : (fc.engine_power.errors && (formDirective.submitted || fc.engine_power.touched)) }"
+              formControlName="engine_power">
+            <app-error [formControlField]="fc.engine_power" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+      <!-- fuel_type -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-fuel-type">Rodzaj paliwa</label>
+            <input
+              type="text"
+              id="input-fuel-type"
+              class="form-control"
+              [ngClass]="{ 'is-invalid' : (fc.fuel_type.errors && (formDirective.submitted || fc.fuel_type.touched)) }"
+              formControlName="fuel_type">
+            <app-error [formControlField]="fc.fuel_type" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+      <!-- fuel_type -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-control-label" for="input-price-per-day">Cena na dzień</label>
+            <input
+              type="number"
+              id="input-price-per-day"
+              class="form-control"
+              [ngClass]="{ 'is-invalid' : (fc.price_per_day.errors && (formDirective.submitted || fc.price_per_day.touched)) }"
+              formControlName="price_per_day">
+            <app-error [formControlField]="fc.price_per_day" [submitted]="formDirective.submitted"></app-error>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </ng-template>
+
+  <p-footer>
+    <div class="d-flex justify-content-end">
+      <button
+        type="reset"
+        class="btn btn-secondary"
+        (click)="hide()">
+        {{ 'action.cancel' | transloco }}
+      </button>
+      <button
+        type="submit"
+        class="btn btn-primary mr-1"
+        form="group-form"
+        [disabled]="form.disabled">
+        {{ 'action.save' | transloco }}
+      </button>
+    </div>
+  </p-footer>
+</p-dialog>

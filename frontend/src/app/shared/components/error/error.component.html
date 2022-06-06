@@ -1,0 +1,31 @@
+<span class="text-warning text-xs" *ngIf="formControlField?.errors?.required && (formControlField?.touched || submitted)">
+  {{ 'validation.required' | transloco }}
+</span>
+<span class="text-warning text-xs" *ngIf="formControlField?.errors?.email && (formControlField?.touched || submitted)">
+  {{ 'validation.email' | transloco }}
+</span>
+<span class="text-warning text-xs" *ngIf="formControlField?.errors?.pattern && (formControlField?.touched || submitted)">
+  {{ 'validation.pattern' | transloco: { pattern: optionalParams } }}
+</span>
+<span class="text-warning text-xs" *ngIf="formControlField?.errors?.minlength && (formControlField?.touched || submitted)">
+  {{ 'validation.minlength' | transloco : { min: formControlField?.errors?.minlength?.requiredLength } }}
+</span>
+<span class="text-warning text-xs" *ngIf="formControlField?.errors?.maxLength && (formControlField?.touched || submitted)">
+    {{ 'validation.maxlength' | transloco : { min: formControlField?.errors?.maxlength?.requiredLength } }}
+</span>
+<span class="text-warning text-xs" *ngIf="formControlField?.errors?.min && (formControlField?.touched || submitted)">
+    {{ 'validation.min' | transloco : { min: formControlField?.errors?.min?.min } }}
+</span>
+<span class="text-warning text-xs" *ngIf="formControlField?.errors?.max && (formControlField?.touched || submitted)">
+    {{ 'validation.max' | transloco : { min: formControlField?.errors?.max?.max } }}
+</span>
+<span class="text-warning text-xs" *ngIf="formControlField?.errors?.mustMatch && (formControlField?.touched || submitted)">
+    {{ 'validation.mustMatch' | transloco }}
+</span>
+<span class="text-warning text-xs" *ngIf="formControlField?.errors?.requiredValue && (formControlField?.touched || submitted)">
+    {{ 'validation.requiredValue' | transloco }}
+</span>
+<span class="text-warning text-xs" *ngIf="formControlField?.errors?.minLengthArray && (formControlField?.touched || submitted)">
+    {{ 'validation.minLengthArray' | transloco : { min: formControlField?.errors?.minLengthArray } }}
+</span>
+
